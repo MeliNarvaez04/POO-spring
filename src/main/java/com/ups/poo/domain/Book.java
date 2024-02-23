@@ -12,7 +12,7 @@ public class Book {
     private String title;
     private String editorial;
     @ManyToOne
-    @JoinColumn(name = "author_id", nullable = true)
+    @JoinColumn(name = "author_id")
     private Author author;
 
     public Book() {
@@ -21,6 +21,14 @@ public class Book {
     public Book(String title, String editorial) {
         this.title = title;
         this.editorial = editorial;
+    }
+
+    public Long getId() {
+        return Id;
+    }
+
+    public void setId(Long id) {
+        Id = id;
     }
 
     public String getTitle() {
@@ -39,12 +47,12 @@ public class Book {
         this.editorial = editorial;
     }
 
-    public Long getId() {
-        return Id;
+    public Author getAuthor() {
+        return author;
     }
 
-    public void setId(Long id) {
-        Id = id;
+    public void setAuthor(Author author) {
+        this.author = author;
     }
 
     public Author getAuthors() {
