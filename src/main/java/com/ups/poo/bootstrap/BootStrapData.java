@@ -13,30 +13,34 @@ public class BootStrapData implements CommandLineRunner {
     private  final AuthorRepository authorRepository;
     private final BookRepository bookRepository;
 
-    public BootStrapData (AuthorRepository authorRepository, BookRepository bookRepository){
+
+    public BootStrapData(AuthorRepository authorRepository,
+                         BookRepository bookRepository) {
         this.authorRepository = authorRepository;
         this.bookRepository = bookRepository;
-    }
 
+    }
 
     @Override
     public void run(String... args) throws Exception {
         Book book1 = new Book();
         book1.setTitle ("Los 3 Mosquetores");
         book1.setEditorial("Pearson");
+        book1.setPublisher("BM");
         bookRepository.save(book1);
 
 
         Book book2 = new Book();
         book2.setTitle ("Conde de Montecristo");
         book2.setEditorial("Pearson");
+        book2.setPublisher("MV");
         bookRepository.save(book2);
 
         Author author1 = new Author("Alejandro", "Dunas");
         author1.getBooks().add(book1);
         author1. getBooks().add(book2);
-        book1.setAuthors(author1);
-        book2.setAuthors(author1);
+        book1.setAuthor(author1);
+        book2.setAuthor(author1);
         authorRepository.save(author1);
         bookRepository.save(book1);
         bookRepository.save(book2);
@@ -45,18 +49,20 @@ public class BootStrapData implements CommandLineRunner {
         Book book3 = new Book();
         book3.setTitle("Buscando a Alaska");
         book3.setEditorial("E. P. Dutto");
+        book3.setPublisher("MN");
         bookRepository.save(book3);
 
         Book book4 = new Book();
         book4.setTitle("Bajo la misma estrella");
         book4.setEditorial("Dutton Books");
+        book4.setPublisher("MBM");
         bookRepository.save(book4);
 
         Author author2 = new Author("John", "Green");
         author2.getBooks().add(book3);
         author2.getBooks().add(book4);
-        book3.setAuthors(author2);
-        book4.setAuthors(author2);
+        book3.setAuthor(author2);
+        book4.setAuthor(author2);
         authorRepository.save(author2);
         bookRepository.save(book3);
         bookRepository.save(book4);
@@ -65,6 +71,7 @@ public class BootStrapData implements CommandLineRunner {
         System.out.println("---------------------Started BootStrapData-----------");
         System.out.println("Number of books: " + bookRepository.count());
         System.out.println("Number of Authors: " + authorRepository.count());
+
 
 
 

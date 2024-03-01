@@ -11,6 +11,7 @@ public class Book {
     private Long Id;
     private String title;
     private String editorial;
+    private String publisher;
     @ManyToOne
     @JoinColumn(name = "author_id")
     private Author author;
@@ -18,9 +19,10 @@ public class Book {
     public Book() {
     }
 
-    public Book(String title, String editorial) {
+    public Book(String title, String editorial, String publisher) {
         this.title = title;
         this.editorial = editorial;
+        this.publisher = publisher;
     }
 
     public Long getId() {
@@ -47,19 +49,19 @@ public class Book {
         this.editorial = editorial;
     }
 
+    public String getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
+    }
+
     public Author getAuthor() {
         return author;
     }
 
     public void setAuthor(Author author) {
-        this.author = author;
-    }
-
-    public Author getAuthors() {
-        return author;
-    }
-
-    public void setAuthors(Author author) {
         this.author = author;
     }
 
@@ -73,8 +75,9 @@ public class Book {
 
     @Override
     public int hashCode() {
-        return Objects.hash(Id, title, editorial, author);
+        return Objects.hash(Id, title, editorial, publisher, author);
     }
+
 
     @Override
     public String toString() {
@@ -82,6 +85,8 @@ public class Book {
                 "Id=" + Id +
                 ", title='" + title + '\'' +
                 ", editorial='" + editorial + '\'' +
+                ", publisher='" + publisher + '\'' +
+                ", author=" + author +
                 '}';
     }
 }

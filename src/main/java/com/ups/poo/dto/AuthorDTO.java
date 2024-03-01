@@ -1,5 +1,4 @@
 package com.ups.poo.dto;
-
 public class AuthorDTO {
     private String name;
     private String lastName;
@@ -26,4 +25,9 @@ public class AuthorDTO {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+    @Override
+    public String toString(){
+        return this.name + "" + this.name;
+    }
 }
+
